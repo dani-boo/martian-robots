@@ -5,6 +5,9 @@ First draft on how to build the Martian Robots solution for Red Badger role.
 ## First Thoughts
 I’ve never actually done the Mars Rover challenge before. I’ve read about it over the years and am excited to finally give it a go. For some reason I always picture the little rovers as the last few pieces left on a chessboard - probably because I was a bit of a chess nerd at school - so I’m looking forward to thinking about the movement and logic in that kind of way. If time allows, I’m also hoping to create a simple visual representation of the solution alongside the core implementation. 🤞
 
+![Mars grid](./planning/mars-grid-whiteboard.png)  
+*Whiteboard illustration made with ChatGPT.*
+
 ## Approach
 
 - **Stack:** TypeScript + Node + Vitest + pnpm. Note to self: will probs need "fs" to read/write files as usual with these Node tasks.
