@@ -13,6 +13,7 @@ I’ve never actually done the Mars Rover challenge before. I’ve read about it
 - **Stack:** TypeScript + Node + Vitest + pnpm. Note to self: will probs need "fs" to read/write files as usual with these Node tasks.
 - **Simple steps:** types > movement logic > parser > simulator > CLI.
 - **Testing:** Vitest for unit tests. Focus on: parsing, movement rules, scent behaviour, and end-to-end sample output.
+- **Code style:** Keep functions tiny and single-purpose; small helpers (e.g. parseIntStrict, isCommand) improve correctness and error messages without adding abstraction.
 
 ## Outline
 1. Plan & scaffold project. (~20 min)

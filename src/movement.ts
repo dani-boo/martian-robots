@@ -46,6 +46,9 @@ export const forwardPosition = (
 export const COMMANDS = ['L', 'R', 'F'] as const;
 export type Command = (typeof COMMANDS)[number];
 
+const COMMAND_SET: ReadonlySet<string> = new Set(COMMANDS);
+export const isCommand = (c: string): c is Command => COMMAND_SET.has(c);
+
 export const formatValidCommands = (): string => COMMANDS.join(', ');
 
 // Default branch helper: keep a `default` but preserve exhaustiveness via `never`.
