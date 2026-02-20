@@ -16,3 +16,27 @@ export const runFromInput = (input: string): string => {
   const results = runSimulation(parsed);
   return results.map(formatResult).join('\n');
 };
+
+// CLI display helpers (prompts, labels, result formatting)
+
+export const getStdinPrompt = (): string =>
+  '\n  MARTIAN ROBOTS\n  Enter grid (maxX maxY), then for each robot: position (x y O) and commands (L R F).\n  When done: Ctrl+D (Mac/Linux) or Ctrl+Z + Enter (Windows).\n\n  Enter your mission:\n  ----------------------------------------\n';
+
+export const getMissionReportLabel = (): string =>
+  '\n  Mission report\n  ----------------------------------------\n\n';
+
+export const getFileHeader = (path: string): string =>
+  '  Running mission from ' +
+  path +
+  '.\n\n  Mission report — each line: final position and orientation; LOST = robot fell off the grid.\n\n';
+
+export const formatResultLine = (line: string): string => {
+  const lost = line.endsWith(' LOST');
+  const icon = lost ? '  ⚠ ' : '  ✓ ';
+  return icon + line;
+};
+
+export const formatNoRobots = (): string => '  (no robots deployed)';
+
+export const formatError = (msg: string): string =>
+  '\n  ✗ Mission failed: ' + msg + '\n';

@@ -6,7 +6,7 @@ Draft doc on how to build the Martian Robots solution for Red Badger role.
 I’ve never actually done the Mars Rover challenge before. I’ve read about it over the years and am excited to finally give it a go. For some reason I always picture the little rovers as the last few pieces left on a chessboard - probably because I was a bit of a chess nerd at school - so I’m looking forward to thinking about the movement and logic in that kind of way. If time allows, I’m also hoping to create a simple visual representation of the solution alongside the core implementation. 🤞
 
 ![Mars grid](./assets/mars-grid-whiteboard.png)  
-*Whiteboard illustration made with ChatGPT.*
+*Whiteboard illustration.*
 
 ## Approach
 
@@ -64,5 +64,5 @@ I'd ❤️ to add some kind of UI representation so the simulation isn't only CL
 A `samples/` folder holds copy-paste-ready input files: the official example (sample-01), simple and mixed scenarios (e.g. scent, rotations, minimal grid), and edge-case files (scent per orientation, scent skip then continue, stop on LOST) so users can run the CLI easily and reviewers can sanity-check tricky behaviour. All listed in the README with commands.
 This was the final on-the-fly addition, purely for DevX.
 
-## ⏰ Last-minute UI choice: terminal CLI with chalk (no web UI)  
-I knew I would run out of time so I made a judgement call. Instead of a web or GUI interface, the product uses a terminal CLI. The interface is styled with chalk (colours, boxes, clear copy) and designed to feel like a small “mission control” game so it’s engaging to use. All of this styling lives in `cliUI.ts` and does not affect core logic. I used AI to speed up this terminal-styled implementation experience rather than creating a browser or desktop app.
+## ⏰ Last-minute UI choice: terminal CLI (no web UI)  
+I knew I would run out of time so I made a judgement call. Instead of a web or GUI interface, the product uses a terminal CLI so it's quick to run and pipe.

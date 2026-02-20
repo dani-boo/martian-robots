@@ -5,8 +5,7 @@ A small TypeScript CLI for the classic Martian Robots problem.
 Robots move on a rectangular grid using `L`, `R`, and `F` commands.  
 If a robot goes off the edge, it is **LOST** and leaves a scent so future robots ignore the same fatal move.
 
-Built with Node, TypeScript, and Vitest.  
-Terminal output is lightly styled with [chalk](https://github.com/chalk/chalk). for a retro mission-control feel.
+Built with Node, TypeScript, and Vitest.
 
 ![Terminal output](./assets/martian-robots-terminal-output.png)
 
@@ -87,7 +86,6 @@ src/
   simulator.ts    # Robot execution + scent rules
   cliHelpers.ts   # parse -> simulate -> format
   cli.ts          # CLI entrypoint
-  cliUI.ts        # Terminal styling only
   *.test.ts       # Vitest tests
 
 sample-input.txt   # Same as samples/sample-01-official.txt

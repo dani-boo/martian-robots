@@ -4,7 +4,7 @@
  * How it works:
  * 1. Split the input into lines (toLines).
  * 2. Line 1 = grid bounds ("maxX maxY").
- * 3. Lines 2–3, 4–5, 6–7, … = one robot each: position line ("x y O") then command line ("LRF...").
+ * 3. Lines 2-3, 4-5, 6-7, … = one robot each: position line ("x y O") then command line ("LRF...").
  * 4. Small helpers (parseGrid, parsePosition, parseCommandString) turn each line into typed data; parseRobotInput combines one position line + one command line into a RobotInput. Invalid input throws with a clear message.
  * 5. Tech spec limits: max coordinate 50, instruction string length ≤ 100.
  */
