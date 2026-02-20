@@ -57,12 +57,16 @@ describe('parseGrid', () => {
   });
   describe('invalid input', () => {
     it('when not two parts', () => {
-      expect(() => parseGrid('5')).toThrow(/Expected "maxX maxY"/);
-      expect(() => parseGrid('5 3 1')).toThrow(/Expected "maxX maxY"/);
+      expect(() => parseGrid('5')).toThrow(/grid size.*max X and max Y/);
+      expect(() => parseGrid('5 3 1')).toThrow(/grid size.*max X and max Y/);
     });
     it('when parts are not integers', () => {
       expect(() => parseGrid('a b')).toThrow(/must be an integer/);
       expect(() => parseGrid('1.5 3')).toThrow(/must be an integer/);
+    });
+    it('when grid size exceeds 50 (tech spec)', () => {
+      expect(() => parseGrid('51 3')).toThrow(/Grid size must not exceed 50/);
+      expect(() => parseGrid('5 51')).toThrow(/Grid size must not exceed 50/);
     });
   });
 });
@@ -91,13 +95,17 @@ describe('parsePosition', () => {
   });
   describe('invalid input throws', () => {
     it('when not three parts', () => {
-      expect(() => parsePosition('1 1')).toThrow(/Expected "x y O"/);
+      expect(() => parsePosition('1 1')).toThrow(/Position line must be three space-separated/);
     });
     it('when x or y is not an integer', () => {
       expect(() => parsePosition('1.5 1 E')).toThrow(/must be an integer/);
     });
     it('when orientation is invalid', () => {
       expect(() => parsePosition('1 1 X')).toThrow(/Orientation must be N, S, E or W/);
+    });
+    it('when position exceeds 50 (tech spec)', () => {
+      expect(() => parsePosition('51 0 E')).toThrow(/Position coordinates must be between 0 and 50/);
+      expect(() => parsePosition('0 51 N')).toThrow(/Position coordinates must be between 0 and 50/);
     });
   });
 });
@@ -113,7 +121,10 @@ describe('parseCommandString', () => {
   });
   describe('invalid input', () => {
     it('throws on invalid character', () => {
-      expect(() => parseCommandString('RFX')).toThrow(/Invalid command/);
+      expect(() => parseCommandString('RFX')).toThrow(/Command line must be a continuous string/);
+    });
+    it('throws when instruction string exceeds 100 chars (tech spec)', () => {
+      expect(() => parseCommandString('F'.repeat(101))).toThrow(/at most 100 characters/);
     });
   });
 });
@@ -189,13 +200,13 @@ describe('parseInput', () => {
     });
 
     it('when grid line does not have two numbers', () => {
-      expect(() => parseInput('5\n1 1 E\nFF')).toThrow(/Expected "maxX maxY"/);
-      expect(() => parseInput('5 3 1\n1 1 E\nFF')).toThrow(/Expected "maxX maxY"/);
+      expect(() => parseInput('5\n1 1 E\nFF')).toThrow(/grid size.*max X and max Y/);
+      expect(() => parseInput('5 3 1\n1 1 E\nFF')).toThrow(/grid size.*max X and max Y/);
     });
 
     it('when position line does not have x y O', () => {
-      expect(() => parseInput('5 3\n1 1\nFF')).toThrow(/Expected "x y O"/);
-      expect(() => parseInput('5 3\n1 E\nFF')).toThrow(/Expected "x y O"/);
+      expect(() => parseInput('5 3\n1 1\nFF')).toThrow(/Position line must be three space-separated/);
+      expect(() => parseInput('5 3\n1 E\nFF')).toThrow(/Position line must be three space-separated/);
     });
 
     it('when orientation is invalid', () => {
@@ -203,7 +214,17 @@ describe('parseInput', () => {
     });
 
     it('when command string contains invalid character', () => {
-      expect(() => parseInput('5 3\n1 1 E\nRFX')).toThrow(/Invalid command/);
+      expect(() => parseInput('5 3\n1 1 E\nRFX')).toThrow(/Command line must be a continuous string/);
+    });
+
+    it('when grid size exceeds 50', () => {
+      expect(() => parseInput('51 3\n1 1 E\nFF')).toThrow(/Grid size must not exceed 50/);
+    });
+    it('when position exceeds 50', () => {
+      expect(() => parseInput('5 3\n51 0 E\nFF')).toThrow(/Position coordinates must be between 0 and 50/);
+    });
+    it('when instruction string exceeds 100 chars', () => {
+      expect(() => parseInput(`5 3\n1 1 E\n${'F'.repeat(101)}`)).toThrow(/at most 100 characters/);
     });
   });
 });

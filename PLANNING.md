@@ -1,11 +1,11 @@
 # 👾 Martian Robots Implementation Plan
 
-First draft on how to build the Martian Robots solution for Red Badger role.
+Draft doc on how to build the Martian Robots solution for Red Badger role.
 
 ## First Thoughts
 I’ve never actually done the Mars Rover challenge before. I’ve read about it over the years and am excited to finally give it a go. For some reason I always picture the little rovers as the last few pieces left on a chessboard - probably because I was a bit of a chess nerd at school - so I’m looking forward to thinking about the movement and logic in that kind of way. If time allows, I’m also hoping to create a simple visual representation of the solution alongside the core implementation. 🤞
 
-![Mars grid](./planning/mars-grid-whiteboard.png)  
+![Mars grid](./assets/mars-grid-whiteboard.png)  
 *Whiteboard illustration made with ChatGPT.*
 
 ## Approach
@@ -45,8 +45,10 @@ I'd ❤️ to add some kind of UI representation so the simulation isn't only CL
 ## Trade-offs
 
 - **UI scope:** UI is *not* the focus; I'll add a minimal view (input + grid result) *only if time allows*, after CLI and tests. Keep scope tight.
-- **Input:** Parser assumes well-formed input (max coord 50, instructions & 100 chars). No heavy validation.
-- **Scent storage:** Set of string keys e.g. `"x,y"`. Keep it simple; sufficient for tech test.
+- **Input:** Parser enforces tech spec limits: max coordinate 50, instruction string length ≤ 100. Clear errors when exceeded.
+- **Scent storage:** Set of string keys (position + orientation, e.g. `"x,y,O"`). One key per “fell off from this cell facing this direction”. Keep it simple; sufficient for tech test.
+- **Error messages:** Parser throws with clear, actionable text so users and developers know what to fix.
+- **CONTRIBUTING / CODEOWNERS:** Omitted on purpose; this is a tech test, not a long-lived repo.
 
 ## Update/notes
 ### Simulator approach
@@ -57,3 +59,6 @@ I'd ❤️ to add some kind of UI representation so the simulation isn't only CL
 4. ❌ "F" out of bounds: `scentKey` -> if in `scents`, skip; else add `scent`, push `lost`, break.
 5. After command loop: if not lost, push result with `lost: false`.
 6. 🧪 Test test refactor test
+
+## ⏰ Last-minute UI choice: terminal CLI with chalk (no web UI)  
+I knew I would run out of time so I made a judgement call. Instead of a web or GUI interface, the product uses a terminal CLI. The interface is styled with chalk (colours, boxes, clear copy) and designed to feel like a small “mission control” game so it’s engaging to use. All of this styling lives in `cliUI.ts` and does not affect core logic. I used AI to speed up this terminal-styled implementation experience rather than creating a browser or desktop app.

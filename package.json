@@ -12,7 +12,11 @@
     "test": "vitest run",
     "test:watch": "vitest"
   },
-  "keywords": ["mars", "robots", "simulator"],
+  "keywords": [
+    "mars",
+    "robots",
+    "simulator"
+  ],
   "author": "",
   "license": "MIT",
   "devDependencies": {
@@ -22,5 +26,8 @@
     "typescript": "^5.3.3",
     "typescript-eslint": "^8.15.0",
     "vitest": "^2.1.0"
+  },
+  "dependencies": {
+    "chalk": "^4.1.2"
   }
 }

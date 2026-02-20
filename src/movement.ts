@@ -42,7 +42,6 @@ export const forwardPosition = (
 };
 
 // Movement command set (pure): L/R change orientation; F updates position.
-// Bounds/scent/lost logic belongs to simulator
 export const COMMANDS = ['L', 'R', 'F'] as const;
 export type Command = (typeof COMMANDS)[number];
 
