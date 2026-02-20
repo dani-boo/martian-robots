@@ -6,19 +6,21 @@
 // Orientations (N/S/E/W)
 export type Orientation = 'N' | 'S' | 'E' | 'W';
 
-export const ORIENTATIONS: Orientation[] = ['N', 'S', 'E', 'W'] as const;
-
-export function isOrientation(s: string): s is Orientation {
-  return ORIENTATIONS.includes(s as Orientation);
-}
-
 // Position (grid coordinates; integers)
-export interface Position {
-  x: number;
-  y: number;
-}
+export type Position = { x: number; y: number };
+
+export type Delta = { dx: number; dy: number };
+
+export const ORIENTATIONS = ['N', 'E', 'S', 'W'] as const;
+
+export const isOrientation = (s: string): s is Orientation =>
+  (ORIENTATIONS as readonly string[]).includes(s);
 
 export const positionKey = (p: Position): string => `${p.x},${p.y}`;
+
+// Scent key should include orientation to represent "falling off from this cell while facing this direction"
+export const scentKey = (p: Position, o: Orientation): string =>
+  `${p.x},${p.y},${o}`;
 
 // Grid (rectangular bounds; lower-left is 0,0)
 export interface Grid {

@@ -46,4 +46,3 @@ I'd ❤️ to add some kind of UI representation so the simulation isn't only CL
 - **UI scope:** UI is *not* the focus; I'll add a minimal view (input + grid result) *only if time allows*, after CLI and tests. Keep scope tight.
 - **Input:** Parser assumes well-formed input (max coord 50, instructions & 100 chars). No heavy validation.
 - **Scent storage:** Set of string keys e.g. `"x,y"`. Keep it simple; sufficient for tech test.
-

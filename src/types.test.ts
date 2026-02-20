@@ -1,5 +1,12 @@
 import { describe, it, expect } from 'vitest';
-import { isInBounds } from './types';
+import { isInBounds, scentKey } from './types';
+
+describe('scentKey', () => {
+  it('includes position and orientation (cell + facing direction)', () => {
+    expect(scentKey({ x: 1, y: 2 }, 'N')).toBe('1,2,N');
+    expect(scentKey({ x: 0, y: 0 }, 'W')).toBe('0,0,W');
+  });
+});
 
 describe('isInBounds', () => {
   const grid = { maxX: 5, maxY: 3 };
