@@ -25,7 +25,7 @@ pnpm start
 - paste input
 - finish with Ctrl+D (Mac/Linux) or Ctrl+Z + Enter (Windows)
 
-**Run sample input:**  
+**Run the official sample:**  
 ```bash
 pnpm run:sample
 ```
@@ -34,6 +34,33 @@ pnpm run:sample
 ```bash
 node dist/cli.js path/to/input.txt
 ```
+
+**Run a sample file (after `pnpm run build`):**  
+Copy and paste any of these:
+
+| Sample | Command |
+|--------|---------|
+| Official example (3 robots) | `node dist/cli.js samples/sample-01-official.txt` |
+| Single robot, simple movement | `node dist/cli.js samples/sample-02-simple.txt` |
+| Robot immediately LOST | `node dist/cli.js samples/sample-03-immediate-lost.txt` |
+| Scent prevents second loss | `node dist/cli.js samples/sample-04-scent.txt` |
+| Multiple robots, mixed outcomes | `node dist/cli.js samples/sample-05-mixed.txt` |
+| Rotations only (no F) | `node dist/cli.js samples/sample-06-rotations-only.txt` |
+| Edge walking (safe) | `node dist/cli.js samples/sample-07-edge-walking.txt` |
+| Large grid (50×50) | `node dist/cli.js samples/sample-08-large-grid.txt` |
+| Robot near edge but survives | `node dist/cli.js samples/sample-09-survives.txt` |
+| Multiple scents in play | `node dist/cli.js samples/sample-10-multiple-scents.txt` |
+| Long instruction string | `node dist/cli.js samples/sample-11-long-instructions.txt` |
+| Minimal grid (0×0, any F is LOST) | `node dist/cli.js samples/sample-12-minimal-grid.txt` |
+| **Edge case:** Scent is per-orientation (N lost ≠ E lost) | `node dist/cli.js samples/edge-01-scent-orientation.txt` |
+| **Edge case:** After scent skip, robot continues commands | `node dist/cli.js samples/edge-02-scent-skip-continues.txt` |
+| **Edge case:** LOST stops command execution immediately | `node dist/cli.js samples/edge-03-stop-on-lost.txt` |
+
+**Or, for an interactive experience:**  
+- run `pnpm run build && pnpm start`
+- copy & paste the contents of these individual files in the terminal
+- press `CTRL+D` (Mac/Linux) or `Ctrl+Z` + `Enter` (Windows)
+... and see your "Mission Report" styled (minimally) with [chalk](https://github.com/chalk/chalk).
 
 ## Approach
 
@@ -63,7 +90,9 @@ src/
   cliUI.ts        # Terminal styling only
   *.test.ts       # Vitest tests
 
-sample-input.txt
+sample-input.txt   # Same as samples/sample-01-official.txt
+samples/           # sample-01-official, sample-02-simple, sample-03-immediate-lost,
+                   # sample-04-scent, sample-05-mixed, ... sample-12-minimal-grid
 assets/
 ```
 

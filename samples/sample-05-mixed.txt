@@ -1,0 +1,9 @@
+4 4
+0 0 N
+FFRFF
+4 4 E
+FF
+2 2 S
+FFLFFRFF
+1 4 W
+FFFF

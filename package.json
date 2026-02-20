@@ -7,7 +7,7 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/cli.js",
-    "run:sample": "node dist/cli.js sample-input.txt",
+    "run:sample": "node dist/cli.js samples/sample-01-official.txt",
     "lint": "eslint src",
     "test": "vitest run",
     "test:watch": "vitest"

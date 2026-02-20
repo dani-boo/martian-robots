@@ -8,34 +8,13 @@ import {
   parseRobotInput,
   parseInput,
 } from './parser';
-
-/** Example input from tech test spec. */
-const sampleInput = `5 3
-1 1 E
-RFRFRFRF
-3 2 N
-FRRFLLFFRRFLL
-0 3 W
-LLFFFLFLFL`;
-
-/** Grid only; no robots. */
-const gridOnlyInput = `5 3`;
-
-/** One robot, no commands (missing command line). */
-const singleRobotNoCommandsInput = `5 3
-1 1 E`;
-
-/** One robot, short command string. */
-const singleRobotShortInput = `5 3
-0 0 N
-FF`;
-
-/** Two robots, different orientations and short commands. */
-const twoRobotsInput = `10 10
-0 0 N
-L
-5 5 S
-RR`;
+import {
+  sampleInput,
+  gridOnlyInput,
+  singleRobotNoCommandsInput,
+  singleRobotShortInput,
+  twoRobotsInput,
+} from './testFixtures';
 
 describe('toLines', () => {
   it('splits on newline and trims each line (empty lines preserved)', () => {

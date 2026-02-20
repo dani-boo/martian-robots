@@ -1,13 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { formatResult, runFromInput } from './cliHelpers';
-
-const sampleInput = `5 3
-1 1 E
-RFRFRFRF
-3 2 N
-FRRFLLFFRRFLL
-0 3 W
-LLFFFLFLFL`;
+import { sampleInput } from './testFixtures';
 
 describe('formatResult', () => {
   it('formats result without LOST when not lost', () => {

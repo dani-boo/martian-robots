@@ -60,5 +60,9 @@ I'd ❤️ to add some kind of UI representation so the simulation isn't only CL
 5. After command loop: if not lost, push result with `lost: false`.
 6. 🧪 Test test refactor test
 
+### Samples
+A `samples/` folder holds copy-paste-ready input files: the official example (sample-01), simple and mixed scenarios (e.g. scent, rotations, minimal grid), and edge-case files (scent per orientation, scent skip then continue, stop on LOST) so users can run the CLI easily and reviewers can sanity-check tricky behaviour. All listed in the README with commands.
+This was the final on-the-fly addition, purely for DevX.
+
 ## ⏰ Last-minute UI choice: terminal CLI with chalk (no web UI)  
 I knew I would run out of time so I made a judgement call. Instead of a web or GUI interface, the product uses a terminal CLI. The interface is styled with chalk (colours, boxes, clear copy) and designed to feel like a small “mission control” game so it’s engaging to use. All of this styling lives in `cliUI.ts` and does not affect core logic. I used AI to speed up this terminal-styled implementation experience rather than creating a browser or desktop app.

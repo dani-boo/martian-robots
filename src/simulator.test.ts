@@ -1,14 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { parseInput } from './parser';
 import { runSimulation } from './simulator';
-
-const sampleInput = `5 3
-1 1 E
-RFRFRFRF
-3 2 N
-FRRFLLFFRRFLL
-0 3 W
-LLFFFLFLFL`;
+import { sampleInput } from './testFixtures';
 
 describe('runSimulation', () => {
   describe('valid input', () => {
