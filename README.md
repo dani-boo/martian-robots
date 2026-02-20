@@ -6,7 +6,7 @@ Robots move on a rectangular grid using `L`, `R`, and `F` commands.
 If a robot goes off the edge, it is **LOST** and leaves a scent so future robots ignore the same fatal move.
 
 Built with Node, TypeScript, and Vitest.  
-Terminal output is lightly styled with chalk for a retro mission-control feel.
+Terminal output is lightly styled with [chalk](https://github.com/chalk/chalk). for a retro mission-control feel.
 
 ![Terminal output](./assets/martian-robots-terminal-output.png)
 
@@ -22,7 +22,7 @@ pnpm start
 ```
 
 **Interactive mode:**  
-- paste input
+- manually enter or paste input
 - finish with Ctrl+D (Mac/Linux) or Ctrl+Z + Enter (Windows)
 
 **Run the official sample:**  
@@ -56,11 +56,11 @@ Copy and paste any of these:
 | **Edge case:** After scent skip, robot continues commands | `node dist/cli.js samples/edge-02-scent-skip-continues.txt` |
 | **Edge case:** LOST stops command execution immediately | `node dist/cli.js samples/edge-03-stop-on-lost.txt` |
 
-**Or, for an interactive experience:**  
+**Or:**  
 - run `pnpm run build && pnpm start`
 - copy & paste the contents of these individual files in the terminal
-- press `CTRL+D` (Mac/Linux) or `Ctrl+Z` + `Enter` (Windows)
-... and see your "Mission Report" styled (minimally) with [chalk](https://github.com/chalk/chalk).
+- and press `CTRL+D` (Mac/Linux) or `Ctrl+Z` + `Enter` (Windows)
+
 
 ## Approach
 
