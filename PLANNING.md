@@ -47,3 +47,13 @@ I'd ❤️ to add some kind of UI representation so the simulation isn't only CL
 - **UI scope:** UI is *not* the focus; I'll add a minimal view (input + grid result) *only if time allows*, after CLI and tests. Keep scope tight.
 - **Input:** Parser assumes well-formed input (max coord 50, instructions & 100 chars). No heavy validation.
 - **Scent storage:** Set of string keys e.g. `"x,y"`. Keep it simple; sufficient for tech test.
+
+## Update/notes
+### Simulator approach
+**🎲 Treat it like game code. Easy to follow. Fun to build.**  
+1. ⚒️ Create `runSimulation` that takes parsed input args (grid & robots). Loop over robots, then loop over commands.
+2. ⚒️ L/R: `applyCommand`, update state, continue.
+3. ✅ "F" in bounds: `forwardPosition` + `isInBounds` -> update state, continue.
+4. ❌ "F" out of bounds: `scentKey` -> if in `scents`, skip; else add `scent`, push `lost`, break.
+5. After command loop: if not lost, push result with `lost: false`.
+6. 🧪 Test test refactor test
