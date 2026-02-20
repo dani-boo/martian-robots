@@ -7,7 +7,7 @@ If a robot goes off the edge, it is **LOST** and leaves a scent so future robots
 
 Built with Node, TypeScript, and Vitest.
 
-![Terminal output](./assets/martian-robots-terminal-output.png)
+![Whiteboard illustration](./assets/mars-grid-whiteboard.png)
 
 **Prerequisites:** Node (see `.nvmrc`), pnpm.
 
